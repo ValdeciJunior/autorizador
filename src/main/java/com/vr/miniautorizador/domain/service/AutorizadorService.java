@@ -15,7 +15,6 @@ public class AutorizadorService {
 
     private final CartaoRepository cartaoRepository;
 
-    // Construtor explícito para Injeção de Dependência sem Lombok
     public AutorizadorService(CartaoRepository cartaoRepository) {
         this.cartaoRepository = cartaoRepository;
     }
