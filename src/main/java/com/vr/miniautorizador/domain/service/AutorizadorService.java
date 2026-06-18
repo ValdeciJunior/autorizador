@@ -23,6 +23,7 @@ public class AutorizadorService {
     public void autorizarTransacao(String numeroCartao, String senha, BigDecimal valor) {
         Optional<Cartao> cartaoOpt = cartaoRepository.findByNumeroCartaoWithLock(numeroCartao);
 
+        // Vamos percorrer por todos os ENUMs até encontrar o que se encaixa com a regra atual
         Arrays.stream(RegraAutorizacao.values())
                 .forEach(regra -> regra.avaliar(cartaoOpt, senha, valor));
 

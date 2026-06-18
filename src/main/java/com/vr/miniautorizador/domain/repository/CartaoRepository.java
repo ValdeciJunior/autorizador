@@ -16,6 +16,8 @@ public interface CartaoRepository extends JpaRepository<Cartao, Long> {
     Optional<Cartao> findByNumeroCartao(String numeroCartao);
 
     // Busca com Trava de Escrita Atômica (usada estritamente no fluxo de autorização)
+    // No caso descidi pelo cenário pessimista para que haja uma concorrência pelas requisições e que sempre a próxima
+    // transação vai ficar em uma fila esperando a anterior for concluída
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query("SELECT c FROM Cartao c WHERE c.numeroCartao = :numeroCartao")
     Optional<Cartao> findByNumeroCartaoWithLock(String numeroCartao);
