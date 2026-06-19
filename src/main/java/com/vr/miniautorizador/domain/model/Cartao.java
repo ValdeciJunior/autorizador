@@ -32,6 +32,10 @@ public class Cartao {
         this.saldo = this.saldo.subtract(valor);
     }
 
+    public void creditar(BigDecimal valor) {
+        this.saldo = this.saldo.add(valor);
+    }
+
     public Long getId() {
         return id;
     }

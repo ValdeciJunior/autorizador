@@ -14,5 +14,8 @@ public record TransacaoRequest(
 
         @NotNull(message = "O valor da transação é obrigatório")
         @Min(value = 0, message = "O valor da transação deve ser maior que zero")
-        BigDecimal valor
+        BigDecimal valor,
+
+        @NotNull(message = "O estabelecimento é obrigatório")
+        Long estabelecimentoId
 ) {}

@@ -23,7 +23,14 @@ public class TransacaoController {
     @PostMapping
     @Operation(summary = "Realizar uma transação de débito no cartão")
     public ResponseEntity<String> realizarTransacao(@Valid @RequestBody TransacaoRequest request) {
-        autorizadorService.autorizarTransacao(request.numeroCartao(), request.senhaCartao(), request.valor());
+        autorizadorService.realizarTransacao(request.numeroCartao(), request.senhaCartao(), request.valor(), request.estabelecimentoId());
         return ResponseEntity.status(HttpStatus.CREATED).body("OK");
+    }
+
+    @PostMapping("/{id}/estorno")
+    @Operation(summary = "Realizar estorno de transacao")
+    public ResponseEntity<String> realizarEstorno(@PathVariable Long id){
+        autorizadorService.realizarEstorno(id);
+        return ResponseEntity.status(HttpStatus.OK).body("OK");
     }
 }
