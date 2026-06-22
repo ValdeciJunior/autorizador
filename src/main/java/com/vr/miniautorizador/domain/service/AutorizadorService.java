@@ -4,6 +4,7 @@ import com.vr.miniautorizador.domain.exception.RegraAutorizacaoException;
 import com.vr.miniautorizador.domain.model.*;
 import com.vr.miniautorizador.domain.repository.EstabelecimentoRepository;
 import com.vr.miniautorizador.domain.repository.TransacaoRepository;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,6 +26,7 @@ public class AutorizadorService {
         this.transacaoRepository = transacaoRepository;
     }
 
+    @Transactional(noRollbackFor = RegraAutorizacaoException.class)
     public void realizarTransacao(String numeroCartao, String senha, BigDecimal valor, Long estabelecimentoId) {
         Cartao cartao = cartaoService.findByNumeroCartao(numeroCartao);
         Estabelecimento estabelecimento = estabelecimentoService.findById(estabelecimentoId);

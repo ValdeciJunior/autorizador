@@ -4,7 +4,6 @@ import com.vr.miniautorizador.domain.exception.RegraAutorizacaoException;
 import com.vr.miniautorizador.domain.model.Estabelecimento;
 import com.vr.miniautorizador.domain.repository.EstabelecimentoRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class EstabelecimentoService {
@@ -15,7 +14,6 @@ public class EstabelecimentoService {
         this.estabelecimentoRepository = estabelecimentoRepository;
     }
 
-    @Transactional
     Estabelecimento findById(Long estabelecimentoId) {
         return estabelecimentoRepository.findById(estabelecimentoId)
                 .orElseThrow(() -> new RegraAutorizacaoException("ESTABELECIMENTO_INEXISTENTE"));
