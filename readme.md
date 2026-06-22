@@ -60,8 +60,3 @@ docker run --rm -i -v "${PWD}:/scripts" loadimpact/k6 run /scripts/teste-estress
 Vai ser feito o download da imagem e o teste vai ser executado.
 
 Caso precise fazer alguma alteração nos teste, basta alterar o arquivo ```teste-estresse.js```.
-
-Para derrubar apenas a aplicação sem apagar a infra:
-```bash
-docker compose down
-```

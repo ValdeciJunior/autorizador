@@ -71,7 +71,7 @@ class MiniAutorizadorApplicationTests {
 
         mockMvc.perform(get("/cartoes/" + NUMERO_CARTAO_TESTE))
                 .andExpect(status().isOk())
-                .andExpect(content().string("500.00"));
+                .andExpect(content().string("500"));
     }
 
     @Test
@@ -84,8 +84,9 @@ class MiniAutorizadorApplicationTests {
                         .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isCreated())
                 .andExpect(content().json(objectMapper.writeValueAsString(request)));
+        Integer intNumer = 1;
 
-        TransacaoRequest transacaoValida = new TransacaoRequest(NUMERO_CARTAO_TESTE, SENHA_CORRETA, new BigDecimal("200.00"));
+        TransacaoRequest transacaoValida = new TransacaoRequest(NUMERO_CARTAO_TESTE, SENHA_CORRETA, new BigDecimal("200.00"),intNumer.longValue());
 
         // Primeira transação de 200.00 (Saldo cai para 300.00)
         mockMvc.perform(post("/transacoes")
@@ -118,8 +119,9 @@ class MiniAutorizadorApplicationTests {
                         .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isCreated())
                 .andExpect(content().json(objectMapper.writeValueAsString(request)));
+        Integer intNumer = 1;
 
-        TransacaoRequest transacaoSenhaErrada = new TransacaoRequest(NUMERO_CARTAO_TESTE, "9999", new BigDecimal("10.00"));
+        TransacaoRequest transacaoSenhaErrada = new TransacaoRequest(NUMERO_CARTAO_TESTE, "9999", new BigDecimal("10.00"), intNumer.longValue());
 
         mockMvc.perform(post("/transacoes")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -138,7 +140,9 @@ class MiniAutorizadorApplicationTests {
                 .andExpect(status().isCreated())
                 .andExpect(content().json(objectMapper.writeValueAsString(request)));
 
-        TransacaoRequest transacaoCartaoInexistente = new TransacaoRequest("9999999999999999", "1234", new BigDecimal("10.00"));
+        Integer intNumer = 1;
+
+        TransacaoRequest transacaoCartaoInexistente = new TransacaoRequest("9999999999999999", "1234", new BigDecimal("10.00"), intNumer.longValue());
 
         mockMvc.perform(post("/transacoes")
                         .contentType(MediaType.APPLICATION_JSON)

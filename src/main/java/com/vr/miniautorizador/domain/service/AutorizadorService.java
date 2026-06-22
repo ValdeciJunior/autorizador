@@ -49,6 +49,7 @@ public class AutorizadorService {
         }
     }
 
+    @Transactional
     public void realizarEstorno(Long id){
         Transacao transacao = transacaoRepository.findById(id)
                 .orElseThrow(() -> new RegraAutorizacaoException("TRANSACAO_INEXISTENTE"));

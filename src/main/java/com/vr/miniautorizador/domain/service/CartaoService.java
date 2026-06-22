@@ -26,7 +26,6 @@ public class CartaoService {
                 .orElseThrow(() -> new RegraAutorizacaoException("CARTAO_INEXISTENTE"));
     }
 
-    @Transactional
     public Cartao save(Cartao cartao) {
         return cartaoRepository.save(cartao);
     }
