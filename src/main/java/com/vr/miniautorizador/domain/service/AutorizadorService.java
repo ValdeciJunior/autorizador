@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -67,5 +68,9 @@ public class AutorizadorService {
         cartao.creditar(transacao.getValor());
         cartaoService.save(cartao);
 
+    }
+
+    public List<Transacao> todasTransacoes() {
+        return transacaoRepository.findAll();
     }
 }
