@@ -1,4 +1,4 @@
-package com.vr.miniautorizador.api;
+package com.vr.miniautorizador.api.controller;
 
 import com.vr.miniautorizador.domain.exception.RegraAutorizacaoException;
 import org.springframework.http.ResponseEntity;
