@@ -38,6 +38,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-test-autoconfigure'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     implementation 'org.springframework.ai:spring-ai-openai-spring-boot-starter'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-hibernate6'
 }
 
 dependencyManagement {

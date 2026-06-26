@@ -29,7 +29,7 @@ INSERT INTO cartao (numero_cartao, senha, saldo) VALUES
 -- ----------------------------------------------------------
 -- Transação 1: Comportamento normal do dono (Compra rotineira de manhã em Fortaleza)
 INSERT INTO transacao (cartao_id, estabelecimento_id, valor, status, observacao, data_transacao) VALUES
-(1, 1, 85.50, 'APROVADA', 'Compra mensal de rotina', '2026-06-19 09:15:00');
+(1, 1, 85.50, 'APROVADA', null, '2026-06-19 09:15:00');
 
 -- Transação 2: Comportamento normal do dono (Compra rotineira à noite em Fortaleza)
 INSERT INTO transacao (cartao_id, estabelecimento_id, valor, status, observacao, data_transacao) VALUES
@@ -39,12 +39,12 @@ INSERT INTO transacao (cartao_id, estabelecimento_id, valor, status, observacao,
 
 -- Transação 3: Compra suspeita de valor alto em São Paulo 3 horas depois (Incompatibilidade geográfica!)
 INSERT INTO transacao (cartao_id, estabelecimento_id, valor, status, observacao, data_transacao) VALUES
-(1, 4, 1500.00, 'APROVADA', 'Possivel clonagem - Distancia incompativel', '2026-06-19 23:45:00');
+(1, 4, 1500.00, 'APROVADA', null, '2026-06-19 23:45:00');
 
 -- Transação 4: Tentativa em SP logo em seguida com valor absurdo (Fraude Limite Excedido/Saldo Insuficiente)
 INSERT INTO transacao (cartao_id, estabelecimento_id, valor, status, observacao, data_transacao) VALUES
-(1, 4, 4500.00, 'RECUSADA', 'Saldo insuficiente para a tentativa de fraude', '2026-06-19 23:47:00');
+(1, 4, 4500.00, 'RECUSADA', null, '2026-06-19 23:47:00');
 
 -- Transação 5: Novo estouro de segurança 10 minutos depois, agora no Rio de Janeiro (Ataque simultâneo em vários estados)
 INSERT INTO transacao (cartao_id, estabelecimento_id, valor, status, observacao, data_transacao) VALUES
-(1, 5, 2300.00, 'APROVADA', 'Possivel clonagem - Disparada em multiplos estados', '2026-06-19 23:58:00');
+(1, 5, 2300.00, 'APROVADA', null, '2026-06-19 23:58:00');

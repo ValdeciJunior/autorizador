@@ -6,13 +6,12 @@ import com.vr.miniautorizador.domain.model.Transacao;
 import com.vr.miniautorizador.domain.service.AutorizadorService;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.Prompt;
-import org.springframework.ai.chat.prompt.SystemPromptTemplate;
 import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class AnaliseFraudeService {
@@ -27,6 +26,7 @@ public class AnaliseFraudeService {
         this.objectMapper = objectMapper;
     }
 
+    @Transactional(readOnly = true)
     public String analisarComportamento() throws JsonProcessingException {
         List<Transacao> transacoes = autorizadorService.todasTransacoes();
         return analisarComportamento(objectMapper.writeValueAsString(transacoes));
