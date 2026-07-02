@@ -2,7 +2,8 @@
 
 Projeto de autorização de transações de voucher de benefício 
 desenvolvido em Java 21 com Spring Boot, focado em 
-consistência de dados sob cenários concorrência. 
+consistência de dados sob cenários concorrência. Utiliza também AI para analisar
+transações suspeitas de fraude.
 A aplicação simula um ecossistema distribuído de alta performance e 
 utiliza travas para mitigar problemas de 
 concorrência (Race Conditions).
@@ -11,6 +12,7 @@ concorrência (Race Conditions).
 
 * **Java 21** & **Spring Boot 3.x**
 * **Spring Data JPA** com Lock Pessimista (`PESSIMISTIC_WRITE`)
+* **Spring AI** integrando com um agente do Grok
 * **MySQL 5.7** como banco de dados relacional
 * **Flyway** para migrações automatizadas de schema
 * **Docker & Docker Compose** para orquestração multi-instância em ambiente de desenvolvimento
@@ -36,7 +38,7 @@ Assim também vai executar as migrations do flyway criando assim as tabelas
 automaticamente e populando com dados iniciais para os testes devidos.
 
 *Obs: Caso precise alterar as portas estáticamente definidas, alterar o
-arquivo ```docker-compose.yml``` *
+arquivo ```docker-compose.yml```*
 
 ### 2. Derrubar a aplicação(e apagando completamente a infra do projeto)
 Para derrubar a aplicação e assim a infra(as instâncias e a estrutura do banco):
